@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {{ parent() }} | list
+{% endblock %}
+
+{% block body %}
+   <h2>WishList</h2>
+    <section>
+        {% for bucket in buckets %}
+
+        <article>
+
+            <a href="{{ path('wish_detail', {'id' : bucket.id}) }}">
+                <p>{{ bucket.title }}</p></a>
+
+
+
+        </article>
+        {% endfor %}
+    </section>
+
+{% endblock %}
+
+
+

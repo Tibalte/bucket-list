@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {{ parent() }} | detail
+{% endblock %}
+
+{% block body %}
+    <h2>Detail of wish</h2>
+    <section>
+        <div class="wishList">
+            <h3>{{ bucket.title }}</h3>
+            <div>Description : {{ bucket.description }}</div>
+            <div>Author : {{ bucket.author }}</div>
+            <div>Published ? : {{ bucket.isPublished }}</div>
+            <div>Create in : {{ bucket.dateCreated | date ('Y-m-d')}}</div>
+        </div>
+    </section>
+
+{% endblock %}
+
