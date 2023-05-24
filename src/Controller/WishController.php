@@ -45,7 +45,9 @@ class WishController extends AbstractController
     #[Route('/add', name:'add')]
     public function add(): Response
     {
+        $author = $this->getUser()->getUserIdentifier();
         $wish = new Bucket();
+        $wish->setAuthor($author);
         $wishForm = $this -> createForm(WishType::class, $wish);
 
         return $this->render('wish/add.html.twig', [
