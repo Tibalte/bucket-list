@@ -2,11 +2,15 @@
 
 namespace App\Controller;
 
+use App\Entity\Bucket;
+use App\Form\WishType;
 use App\Repository\BucketRepository;
-use App\Repository\SerieRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+
+
+
 #[Route('/wish', name: 'wish_')]
 class WishController extends AbstractController
 {
@@ -36,6 +40,19 @@ class WishController extends AbstractController
         return $this->render('wish/detail.html.twig', [
             'bucket' => $bucket
         ]);
+    }
+
+    #[Route('/add', name:'add')]
+    public function add(): Response
+    {
+        $wish = new Bucket();
+        $wishForm = $this -> createForm(WishType::class, $wish);
+
+        return $this->render('wish/add.html.twig', [
+            'wishForm' => $wishForm->createView()
+
+        ]);
+
     }
 
 
